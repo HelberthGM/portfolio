@@ -15,8 +15,8 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
-const geometry= new THREE.TorusGeometry(10, 3, 16, 12);
-const material = new THREE.MeshStandardMaterial( { color: 0x0AC1C1, wireframe: true, flatShading: true} ); 
+const geometry= new THREE.TorusGeometry(10, 3, 16, 15);
+const material = new THREE.MeshStandardMaterial( { color: 0x78EEED, wireframe: true ,flatShading: true, metalness: 1, roughness: 1} ); 
 const torus = new THREE.Mesh( geometry, material ); 
 scene.add( torus );
 
@@ -32,8 +32,29 @@ scene.add(lightHelper, gridHelper);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar(){
+    const geometry = new THREE.SphereGeometry(0.25,24,24);
+    const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+    const star = new THREE.Mesh( geometry, material);
+    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ));
 
+    star.position.set(x, y, z);
+    scene.add(star);
 }
+Array(200).fill().forEach(addStar);
+/*
+const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+scene.background = spaceTexture;
+*/
+// planet
+const planetTexture = new THREE.TextureLoader().load('texture.jpg');
+const planet = new THREE.Mesh(
+  new THREE.SphereGeometry(5,32,32),
+  new THREE.MeshStandardMaterial({
+    map: planetTexture,
+  })
+);
+scene.add(planet);
+
 
 function animate() {
   requestAnimationFrame( animate );
