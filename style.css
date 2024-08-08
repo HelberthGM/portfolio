@@ -12,16 +12,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+*/
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #fcfcfcc5;
   text-decoration: inherit;
 }
 a:hover {
   color: #535bf2;
 }
-
+/*
 body {
   margin: 0;
   display: flex;
@@ -112,7 +112,6 @@ main {
 header{
   grid-column: 1/ span 5;
   padding: 1rem;
-  background-color: rgba(15, 15, 15, 0.555);
 }
 
 section {
@@ -126,4 +125,16 @@ blockquote {
   grid-column: 2 / span 9;
   padding: 0;
   margin: 0;
+}
+
+.light {
+  background-color: rgba(133, 198, 255, 0.582);
+}
+.left {
+  grid-column: 6 / 12;
+  background-color: rgba(253, 253, 163, 0.507);
+}
+
+footer {
+  grid-column: 2 / 11;
 }
