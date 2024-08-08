@@ -41,20 +41,36 @@ function addStar(){
     scene.add(star);
 }
 Array(200).fill().forEach(addStar);
-/*
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+
+const spaceTexture = new THREE.TextureLoader().load('fondo.jpg');
 scene.background = spaceTexture;
-*/
+
 // planet
 const planetTexture = new THREE.TextureLoader().load('texture.jpg');
+const logTexture = new THREE.TextureLoader().load('texture0.jpg');
 const planet = new THREE.Mesh(
   new THREE.SphereGeometry(5,32,32),
   new THREE.MeshStandardMaterial({
     map: planetTexture,
+    normalMap: logTexture
   })
 );
 scene.add(planet);
 
+planet.position.z = 30;
+planet.position.setX(-10);
+
+function moveCamera(){
+  const t = document.body.getBoundingClientRect().top;
+  planet.rotation.x += 0.05;
+  planet.rotation.y += 0.075;
+  planet.rotation.z += 0.05;
+
+  camera.position.x = t* -0.01;
+  camera.position.y = t* -0.0002;
+  camera.position.z = t* -0.0002;
+}
+document.body.onscroll = moveCamera;
 
 function animate() {
   requestAnimationFrame( animate );

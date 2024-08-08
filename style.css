@@ -1,4 +1,4 @@
-:root {
+/*:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -94,10 +94,36 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
+*/
 /* My code */
 canvas{
   position: fixed;
   top: 0;
   left: 0;
+}
+
+main {
+  position: absolute;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+header{
+  grid-column: 1/ span 5;
+  padding: 1rem;
+  background-color: rgba(15, 15, 15, 0.555);
+}
+
+section {
+  grid-column: 2 / 8;
+  font-size: 1.25rem;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+blockquote {
+  grid-column: 2 / span 9;
+  padding: 0;
+  margin: 0;
 }
